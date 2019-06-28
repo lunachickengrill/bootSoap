@@ -6,7 +6,6 @@ import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.Assert;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -23,6 +22,7 @@ import eu.vrtime.bootsoap.service.DtoConverter;
 public class UserEndpoint {
 	
 	Logger logger = LoggerFactory.getLogger(UserEndpoint.class);
+	
 
 	private static final String NAMESPACE_URI = "http://www.vrtime.eu/bootsoap/gen";
 
@@ -46,12 +46,13 @@ public class UserEndpoint {
 		if (user.isPresent()) {
 			UserDto dto = converter.toDto(user.get());
 			response.setUser(dto);
+			response.setStatus("SUCCESS");
 
 		} else {
 			UserDto dto = new UserDto();
-			dto.setFirstname("not found");
-			dto.setLastname("not found");
+			dto.setCustomerId(customerId);
 			response.setUser(dto);
+			response.setStatus("NOT FOUND");
 		}
 
 		return response;

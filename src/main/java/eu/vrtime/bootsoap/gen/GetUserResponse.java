@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.7 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2019.06.28 um 07:43:35 AM CEST 
+// Generiert: 2019.06.28 um 11:00:44 AM CEST 
 //
 
 
@@ -26,6 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="user" type="{http://www.vrtime.eu/bootsoap/gen}userDto"/>
+ *         &lt;element name="status" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,13 +37,16 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "user"
+    "user",
+    "status"
 })
 @XmlRootElement(name = "getUserResponse")
 public class GetUserResponse {
 
     @XmlElement(required = true)
     protected UserDto user;
+    @XmlElement(required = true)
+    protected String status;
 
     /**
      * Ruft den Wert der user-Eigenschaft ab.
@@ -66,6 +70,30 @@ public class GetUserResponse {
      */
     public void setUser(UserDto value) {
         this.user = value;
+    }
+
+    /**
+     * Ruft den Wert der status-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * Legt den Wert der status-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setStatus(String value) {
+        this.status = value;
     }
 
 }
